@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="X.CVindicator">
+	<ContentView.Content>
+        <StackLayout x:Name="cviContainer" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+        <Image Source="ic_circle_black" Aspect="AspectFit" WidthRequest="10" x:Name="view1" />
+        <Image Source="ic_circle" Aspect="AspectFit" WidthRequest="10" x:Name="view2" />
+        <Image Source="ic_circle" Aspect="AspectFit" WidthRequest="10" x:Name="view3"/>
+        <Image Source="ic_circle" Aspect="AspectFit" WidthRequest="10" x:Name="view4"/>
+        </StackLayout>
+	</ContentView.Content>
+</ContentView>

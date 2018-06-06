@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PushNotification.Plugin</name>
+    </assembly>
+    <members>
+        <member name="T:PushNotification.Plugin.CrossPushNotification">
+            <summary>
+            Cross platform PushNotification implemenations
+            </summary>
+        </member>
+        <member name="P:PushNotification.Plugin.CrossPushNotification.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+    </members>
+</doc>

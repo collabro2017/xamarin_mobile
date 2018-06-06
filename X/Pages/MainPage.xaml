@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:local="clr-namespace:X;assembly=X"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    x:Class="X.Pages.MainPage">
+	<ContentPage.Content>
+<!--    xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"-->
+        
+        <AbsoluteLayout x:Name="MainConent">
+                <local:CustomMap 
+                    AbsoluteLayout.LayoutBounds = "0,0,1,1"
+                    AbsoluteLayout.LayoutFlags = "All"
+                    x:Name="map"
+                
+                    VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+            />
+<!--                     
+            IsShowingUser = "true"
+                    MyLocationEnabled = "true"-->
+            <local:ScaledFrame Opacity="0.85" HasShadow="false" has_Shadow="false" CornerRadius="7"  AbsoluteLayout.LayoutBounds="0.5, 0.09, 0.9, 0.06"  
+                Padding="6,5,0,5" AbsoluteLayout.LayoutFlags="All" x:Name="searchView">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+<!--            <SearchBar x:Name="searchbar" Placeholder="Search" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />-->
+            <local:TransparentEntry x:Name="searchbar"  HorizontalTextAlignment="Center" Keyboard="Text" FontSize="13" Placeholder="🔎 Search"     TextGravityAlignment="CENTER" 
+                    HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+            </local:ScaledFrame>
+         <!--   <StackLayout  AbsoluteLayout.LayoutFlags="All" 
+            AbsoluteLayout.LayoutBounds=".08,.098,.05,.025" BackgroundColor="Transparent" Orientation="Horizontal" x:Name="searchIcon">
+             <Image Source="ic_search"  x:Name="search_button" HorizontalOptions="Start" BackgroundColor="Transparent" 
+                />   
+                <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer  Tapped="searchTapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout> -->
+            
+             <!--AbsoluteLayout.LayoutFlags="All"
+             AbsoluteLayout.LayoutBounds=".5,.27,.86,.28"-->
+<!--            <StackLayout   BackgroundColor="Transparent">-->
+                <Frame HasShadow="false"
+                Opacity="0.8" x:Name="lvBorder" IsVisible="false" HeightRequest="0" VerticalOptions="Start" AbsoluteLayout.LayoutFlags="All"  AbsoluteLayout.LayoutBounds=".5,.26,.9,.3" BackgroundColor="White" CornerRadius="5" />
+<!--            </StackLayout>-->
+<!--            <StackLayout AbsoluteLayout.LayoutFlags="All" x:Name="lvContainer" AbsoluteLayout.LayoutBounds=".5,.26,.9,.3" BackgroundColor="Transparent">-->
+            <ListView 
+                AbsoluteLayout.LayoutFlags="All"  AbsoluteLayout.LayoutBounds=".5,.26,.9,.3"
+                HorizontalOptions="FillAndExpand" 
+                x:Name="listView"
+                Margin="10"
+                Opacity="0.8"
+                ItemSelected="SelectedPlace"
+                IsVisible="false"
+                SeparatorVisibility="None"
+                BackgroundColor="Transparent"
+                 
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>  
+                                <StackLayout VerticalOptions="FillAndExpand">
+                                <Label VerticalOptions="Start"/>
+                                <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand"  HorizontalOptions="Start">
+    <!--                                <Image Source="ic_direction" HeightRequest="20"/> 
+                                    FormattedText="{Binding NameAndAddress}"
+                                    -->
+                                    <Label Margin="5,0,0,0" Opacity="0.8" FontAttributes="Bold"  FontSize="13" Text="{Binding name}" LineBreakMode="NoWrap" FontFamily="Helvetica-Light" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+
+                                        <Label.FontSize>
+                                           <OnPlatform x:TypeArguments="x:Double"
+                                              iOS="13"
+                                              Android="10" />
+                                       </Label.FontSize>
+                                    </Label>
+                                    <Label Margin="5,0,0,0" Opacity="0.8"  FontSize="13" TextColor="#a1a1a1" Text="{Binding address}" LineBreakMode="NoWrap" FontFamily="Helvetica-Light" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label.FontSize>
+                                           <OnPlatform x:TypeArguments="x:Double"
+                                              iOS="13"
+                                              Android="10" />
+                                       </Label.FontSize>
+                                    </Label>
+                                   <!-- <Label Margin="0,0,0,0" FontSize="13" Text="{Binding address}" FontFamily="Helvetica-Light"
+                                    TextColor="#a1a1a1"
+                                    HorizontalOptions="Start" VerticalOptions="Center" LineBreakMode="TailTruncation"/>-->
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="Gray" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" />
+                            
+                                </StackLayout>
+                         </ViewCell>
+                    </DataTemplate>        
+                </ListView.ItemTemplate>
+            </ListView>
+
+<!--                </StackLayout>-->
+            <Label Text="No results found" x:Name="noResults" TextColor="Gray" IsVisible="false"
+                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="White" FontSize="15" FontFamily="Helvetica-Light"  AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds=".5,.19,.9,.07"/>
+
+
+             <Image Source="target" Margin="0,0,12,5" 
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="1,1,.1,.1"
+            x:Name="MyLocation"
+            BackgroundColor="Transparent"
+            >
+                        <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MyLocationClicked" />
+                        </Image.GestureRecognizers>
+            </Image>  
+            <!--<Label Text="X" IsVisible="false" BackgroundColor="Red" AbsoluteLayout.LayoutBounds=".05,.03,.06,.04" AbsoluteLayout.LayoutFlags="All">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="LogoutTapped" />
+            </Label.GestureRecognizers>
+            </Label>-->
+           <!-- <Image AbsoluteLayout.LayoutBounds="0,0,.1,.1" x:Name="coolImg" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All" Source="cool"/>
+            <Image AbsoluteLayout.LayoutBounds="0,.1,.1,.1" x:Name="coolImg2" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All" Source="cool"/>
+             <Image AbsoluteLayout.LayoutBounds="0,0,.1,.1" x:Name="coolImg3" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All" Source="heart_eyes"/>
+            <Frame BackgroundColor="White" 
+            AbsoluteLayout.LayoutBounds=".9,1,.9,.4"
+            AbsoluteLayout.LayoutFlags="All"
+            CornerRadius="160"
+            WidthRequest="90" 
+            HorizontalOptions="Start" 
+            VerticalOptions="EndAndExpand" HeightRequest="90"
+            HasShadow="false"
+            x:Name="info_view2" 
+            IsVisible="true"/>-->
+           
+            <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"   VerticalOptions="FillAndExpand" 
+                AbsoluteLayout.LayoutBounds="1,1,1,1" 
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="false"
+                x:Name="live_bg"
+                >
+                 <BoxView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="backgroundTapped"/>
+                        </BoxView.GestureRecognizers>
+            </BoxView>
+
+             <AbsoluteLayout 
+                Margin = "0,10,0,0"
+                AbsoluteLayout.LayoutBounds="0,0,1,.1"
+                x:Name="ReactionsContainer"
+                BackgroundColor="Transparent"
+                AbsoluteLayout.LayoutFlags="All"
+                />
+
+            <StackLayout 
+                AbsoluteLayout.LayoutBounds="0,0,.1,.1"
+                AbsoluteLayout.LayoutFlags="All"
+                x:Name="ReactionsContainer2"
+                Spacing="50"
+                Orientation="Horizontal"
+            />
+<!--            1.68 -->
+            <local:CustomFrame AbsoluteLayout.LayoutBounds=".5,1.68,.95,.5" CornerRadius="8"  
+                AbsoluteLayout.LayoutFlags="All" HasShadow="false" Padding="10" x:Name="info_view" IsVisible="true" >
+                
+                <RelativeLayout>
+                     <Label Text="Chefs Table" FontFamily="Helvetica-Bold" BackgroundColor="White" VerticalTextAlignment="End" FontSize="17"  x:Name="info_name" HorizontalOptions="StartAndExpand"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.8,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}" />
+                    
+                    <Image Source="star_yellow" x:Name="rating_star" WidthRequest="16" Aspect="AspectFit"  VerticalOptions="End" HorizontalOptions="Start"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.9,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.1,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}" />
+                    
+                    <Label Text="1.9" FontSize="13" VerticalTextAlignment="End" x:Name="info_rating" Margin="0,0,5,0" HorizontalOptions="End" TextColor="#da2916"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.8,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.1,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}" />
+                     <local:ScaledStackLayout
+                  
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=.12,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.6,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.26,Constant=0}">
+                     <Label Text="Phase 2 block 12 Cale dos, Villa Maria, California"  HeightRequest="50" FontFamily="Helvetica-Light" FontSize="13" TextColor="Gray" 
+                         HorizontalOptions="Start"  x:Name="info_address" BackgroundColor="Transparent"
+                    />
+                    </local:ScaledStackLayout>
+                    <BoxView  HorizontalOptions="StartAndExpand" x:Name="showbtn" WidthRequest="310" HeightRequest="200" BackgroundColor="Transparent"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=-.05,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=0,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.4,Constant=0}" >
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="showRatings"/>
+                            <PanGestureRecognizer PanUpdated ="showratingPan"/>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                  
+                   <!--
+                            <local:CustomButtonRenderer  IsVisible="false" BackgroundColor="#45d0d2" FontSize="8" Image="ic_direction" Text="DIRECTIONS" BorderRadius="8" TextColor="White" FontFamily="Helvetica-Bold"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=.13,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.65,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.32,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}" />-->
+
+                             <local:ScaledStackLayout Orientation="Horizontal" WidthRequest="90"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=.076,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.75,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.32,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.07,Constant=0}">
+                          <Label Text="Google Rating" HorizontalOptions="CenterAndExpand"   WidthRequest="90"
+                                 FontFamily="Helvetica-Light" TextColor="Gray" Opacity="0.8" VerticalTextAlignment="End" BackgroundColor="Transparent" FontSize="9"/>
+                        </local:ScaledStackLayout>
+                    
+              <Frame x:Name="info_getDirection" CornerRadius="5" BackgroundColor="#45d0d2"  HasShadow= "false" Padding="0"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=.15,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.65,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.32,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}" >
+                        
+                            <local:ScaledStackLayout Orientation="Horizontal" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                            <Image Source="ic_direction" HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="DIRECTIONS" TextColor="White" WidthRequest="65" BackgroundColor="Transparent" FontSize="10" FontFamily="Helvetica-Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                             <StackLayout.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="OpenGoogleMaps" />
+                            </StackLayout.GestureRecognizers>
+                        </local:ScaledStackLayout>
+                    </Frame> 
+                      
+                            <local:ScaledStackLayout Orientation="Horizontal" WidthRequest="90"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=.25,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.65,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.32,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.07,Constant=0}">
+                          <Label Text="Distance" x:Name="info_distance" HorizontalOptions="CenterAndExpand"   WidthRequest="90"
+                        FontFamily="Helvetica-Light" TextColor="Gray" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="11"/>
+                        </local:ScaledStackLayout>
+                 
+                        
+                    
+
+        <local:ScaledStackLayout VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="285"
+                        x:Name="carouselViewContainer"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.3,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.7,Constant=0}" >
+              <cv:CarouselViewControl  
+                            BackgroundColor="Transparent"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Position = "0"
+                            ShowIndicators= "true"
+                            x:Name="CarouselView" >
+                <cv:CarouselViewControl.ItemTemplate>
+                  <DataTemplate>
+                    <local:RatingsSelectionView />
+                  </DataTemplate>
+                </cv:CarouselViewControl.ItemTemplate>
+              </cv:CarouselViewControl>
+            </local:ScaledStackLayout>  
+          <!--  <local:CVindicator x:Name="cvindicator" 
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=.9,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=.41,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.32,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.1,Constant=0}"
+                    />            
+                    -->
+        </RelativeLayout> 
+                    
+            </local:CustomFrame>
+
+            <StackLayout AbsoluteLayout.LayoutBounds=".5,.94,.9,.3" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent" IsVisible="false" x:Name="cvLoading">
+            <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" IsRunning="true" />
+            </StackLayout>
+          <!--   <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Chefs Table" FontFamily="Helvetica-Bold" FontSize="17"  x:Name="info_people" HorizontalOptions="StartAndExpand" />
+                <Label Text="1.9" FontSize="13" VerticalTextAlignment="End" HorizontalOptions="End" TextColor="#da2916" /> 
+                <Image Source="star_yellow" WidthRequest="14"  VerticalOptions="End" HorizontalOptions="End"/>
+            </StackLayout>
+                <Label Text="431 w 37th Stdawdawdjioawhjdio ds dw wdsd dsad" FontFamily="Helvetica-Light" FontSize="14" TextColor="Gray" 
+                    HorizontalOptions="Start" Margin="0,0,180,0" x:Name="info_address"/>
+-->     
+<!--            <Image AbsoluteLayout.LayoutBounds="0,0,.1,.1" x:Name="AnimateEmoji" IsVisible="false" WidthRequest="30" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All" Source="hugging"/>-->
+
+            <Image Source="settings_black" Margin="0,0,8,0" 
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds=".05,.05,.1,.03"
+            x:Name="menu_icon"
+            BackgroundColor="Transparent"
+            >
+                        <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenSettings" />
+                        </Image.GestureRecognizers>
+            </Image>  
+
+              <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.5, 0.5" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent" IsVisible="false" x:Name="ssloading">
+            <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" IsRunning="true" />
+            </StackLayout>
+
+        </AbsoluteLayout>
+	</ContentPage.Content>
+</ContentPage>

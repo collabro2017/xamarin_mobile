@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:X;assembly=X"
+    x:Class="X.Pages.SettingsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout Margin="10,0,10,10">
+            <local:ScaledStackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                
+                <Label Text="Settings" FontAttributes="Bold" FontSize="13" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <Label Text="Account" FontAttributes="Bold" FontSize="13" Margin="0,20,0,0" HorizontalOptions="Start" VerticalOptions="Start"/>
+                
+                <StackLayout Orientation="Horizontal">
+                    
+                    <StackLayout Margin="20,10,0,10" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Label Text="First Name:" FontSize="13"  HorizontalOptions="Start" VerticalOptions="Start"/>
+                        <local:TransparentEntry FontSize="13" x:Name="user_fname" />
+                        <BoxView HeightRequest="1"  BackgroundColor="Gray" HorizontalOptions="FillAndExpand" Margin="0,0,0,0"/>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="20,10,20,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Label Text="Last Name:"  FontSize="13" HorizontalOptions="Start" VerticalOptions="Start"/>
+                        <local:TransparentEntry FontSize="13" x:Name="user_lname" />
+                        <BoxView HeightRequest="1"  BackgroundColor="Gray" HorizontalOptions="FillAndExpand" Margin="0,0,0,0"/>
+                    </StackLayout>
+                        
+                </StackLayout>
+                
+                <StackLayout Margin="20,20,0,10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Label Text="Email:" FontSize="13"  HorizontalOptions="Start" VerticalOptions="Start"/>
+                    <local:TransparentEntry FontSize="13"  x:Name="user_email" />
+                    <BoxView HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                </StackLayout>
+
+               <StackLayout Margin="20,20,0,20" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal">
+                        <Label Text="Points:" FontSize="13"  HorizontalOptions="Start" VerticalOptions="Start"/> 
+                        <Label x:Name="Points" FontSize="13"  HorizontalOptions="Start" VerticalOptions="Start" />
+                </StackLayout>
+                    
+                <Label Text="Category" FontAttributes="Bold" FontSize="13" VerticalOptions="Center"/>
+                <StackLayout x:Name="Unselected_Category" Orientation="Horizontal">
+
+                </StackLayout>
+                <local:DragLayout x:Name="Current_Category" VerticalOptions="Start" Margin="20,20,10,0"  BackgroundColor='Transparent'>
+                        
+                   <local:DropBox BackgroundColor="#F8F8F8" x:Name="FoodBox" HeightRequest="50" position="0" BorderColor="Transparent"
+                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.0,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.2,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.3,Constant=0}" />   
+
+                        <local:DropBox x:Name="ServiceBox" BackgroundColor="#F8F8F8" HeightRequest="50" position="1" BorderColor="Transparent"
+                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.25,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.2,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.3,Constant=0}" />            
+
+                        <local:DropBox x:Name="CleanlinessBox" BackgroundColor="#F8F8F8" position="2" BorderColor="Transparent"
+                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.50,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.2,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.3,Constant=0}" />            
+
+                        <local:DropBox x:Name="VibeBox" BackgroundColor="#F8F8F8" position="3" BorderColor="Transparent"
+                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Height,Factor=0,Constant=0}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                            Property=Width,Factor=.75,Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Width,Factor=.2,Constant=0}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,Property=Height,Factor=.3,Constant=0}" />            
+                </local:DragLayout>
+
+                <Label Text="Notifications" FontAttributes="Bold" FontSize="13" Margin="0,20,0,0" HorizontalOptions="Start" VerticalOptions="Start"/>
+                
+                <local:ScaledStackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <Label Text="Location notification" FontSize="13" VerticalTextAlignment="Center" Margin="20,10,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                <Switch HorizontalOptions="End" x:Name="locationNotif" VerticalOptions="Center" Margin="0,0,10,0"/>
+                </local:ScaledStackLayout>
+
+                <local:ScaledStackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <Label Text="Trend notification" FontSize="13" VerticalTextAlignment="Center" Margin="20,10,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                <Switch HorizontalOptions="End" x:Name="trendNotif" VerticalOptions="Center" Margin="0,0,10,0"/>
+                </local:ScaledStackLayout>
+
+                <local:CustomButtonRenderer Clicked="Handle_Clicked" Opacity="0.9" FontSize="13" BackgroundColor="Red" TextColor="White" Text="Logout" VerticalOptions="EndAndExpand" Margin="0,10,0,10" />
+                    
+            </local:ScaledStackLayout>
+             <Label Text="X" IsVisible="true" FontSize="18" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="1,.04,.1,.04" AbsoluteLayout.LayoutFlags="All">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseTapped" NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+            </Label>
+        </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

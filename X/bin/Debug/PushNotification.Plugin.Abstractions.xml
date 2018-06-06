@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PushNotification.Plugin.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:PushNotification.Plugin.Abstractions.PushNotificationNotInitializedException">
+            <summary>
+            Push Notification not Initialized Exception class
+            </summary>
+        </member>
+        <member name="M:PushNotification.Plugin.Abstractions.PushNotificationNotInitializedException.#ctor">
+            <summary>
+            Default Contructor
+            </summary>
+        </member>
+        <member name="M:PushNotification.Plugin.Abstractions.PushNotificationNotInitializedException.#ctor(System.String)">
+            <summary>
+            Constructor with message
+            </summary>
+        </member>
+        <member name="T:PushNotification.Plugin.Abstractions.IPushNotification">
+            <summary>
+            Interface for PushNotification
+            </summary>
+        </member>
+        <member name="T:PushNotification.Plugin.Abstractions.PushNotificationKey">
+            <summary>
+            Push Notification Keys
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Type">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.DomainName">
+            <summary>
+            Domain Name
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Text">
+            <summary>
+            Text
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Subtitle">
+            <summary>
+            Subtitle
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Silent">
+            <summary>
+            Silent
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Alert">
+            <summary>
+            Alert
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Data">
+            <summary>
+            Data
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Token">
+            <summary>
+            Token
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.AppVersion">
+            <summary>
+            App Version
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.IntentFromGcmMessage">
+            <summary>
+            IntentFromGcmMessage
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.BackOffMilliseconds">
+            <summary>
+            BackOffMilliseconds
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.ErrorServiceNotAvailable">
+            <summary>
+            ErrorServiceNotAvailable
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:PushNotification.Plugin.Abstractions.PushNotificationKey.RegistrationComplete">
+            <summary>
+            RegistrationComplete
+            </summary>
+        </member>
+        <member name="T:PushNotification.Plugin.IPushNotificationListener">
+            <summary>
+            Push Events Listener
+            </summary>
+        </member>
+        <member name="M:PushNotification.Plugin.IPushNotificationListener.OnMessage(Newtonsoft.Json.Linq.JObject,PushNotification.Plugin.Abstractions.DeviceType)">
+            <summary>
+            On Message Received
+            </summary>
+            <param name="values"></param>
+            <param name="deviceType"></param>
+        </member>
+        <member name="M:PushNotification.Plugin.IPushNotificationListener.OnRegistered(System.String,PushNotification.Plugin.Abstractions.DeviceType)">
+            <summary>
+            On Registered
+            </summary>
+            <param name="token"></param>
+            <param name="deviceType"></param>
+        </member>
+        <member name="M:PushNotification.Plugin.IPushNotificationListener.OnUnregistered(PushNotification.Plugin.Abstractions.DeviceType)">
+            <summary>
+            On Unregistered
+            </summary>
+            <param name="deviceType"></param>
+        </member>
+        <member name="M:PushNotification.Plugin.IPushNotificationListener.OnError(System.String,PushNotification.Plugin.Abstractions.DeviceType)">
+            <summary>
+            OnError
+            </summary>
+        </member>
+        <member name="M:PushNotification.Plugin.IPushNotificationListener.ShouldShowNotification">
+            <summary>
+            Should Show Notification
+            </summary>
+        </member>
+    </members>
+</doc>

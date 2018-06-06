@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:local="clr-namespace:X;assembly=X"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="X.Pages.SignUp">
+	<ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout
+            AbsoluteLayout.LayoutBounds="1,.6,1,.6" 
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="Transparent"
+            >   
+                <StackLayout HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0"   >
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                <Label Text="First Name"  WidthRequest="122" TextColor="Gray" FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+                <Label Text="Last Name"  TextColor="Gray" FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <local:TransparentEntry   x:Name="fname" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="122"   />
+                    <local:TransparentEntry  x:Name="lname" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="122"   />
+                        <!--<local:TransparentEntry Text="crow" x:Name="fname" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="122"   />
+                    <local:TransparentEntry Text="elmo" x:Name="lname" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="122"   />-->
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5"  Margin="0,0,0,10">
+                    <BoxView HeightRequest="1" WidthRequest="122" BackgroundColor="Gray"/>
+                    <BoxView HeightRequest="1" WidthRequest="122" BackgroundColor="Gray"/>
+                </StackLayout>
+<!--                Email-->
+                <Label Text="Email"  TextColor="Gray" FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+                <local:TransparentEntry   x:Name="email" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" >
+<!--                <local:TransparentEntry Text="cel@gmail.com" x:Name="email" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" >-->
+                <local:TransparentEntry.Behaviors>
+                    <local:EmailValidator x:Name="emailValidator"/>
+                </local:TransparentEntry.Behaviors>
+                </local:TransparentEntry>
+                <BoxView HeightRequest="1" WidthRequest="250" BackgroundColor="Gray"  Margin="0,0,0,10"/>
+<!--                Password-->
+                <Label Text="Password"  TextColor="Gray" FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+<!--                <local:TransparentEntry Text="12341234" IsPassword="true" x:Name="password"  HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" />-->
+                <local:TransparentEntry IsPassword="true" x:Name="password"  HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" />
+                <BoxView HeightRequest="1" WidthRequest="250" BackgroundColor="Gray"/>
+<!--                Sign up button-->
+                <Label HorizontalOptions="End" Text="Sign Up" Margin="0,20,0,0">
+                 <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SignUpClicked"/>
+            </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+           
+            <Label Text="Create Account" FontSize="20" FontAttributes="Bold" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,.12,.7,0.05" 
+            BackgroundColor="Transparent">
+            </Label>
+<!--            back button-->
+             <Label Text="X" IsVisible="true" FontSize="18" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="1,.04,.1,.04" AbsoluteLayout.LayoutFlags="All">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackTapped" />
+            </Label.GestureRecognizers>
+            </Label>
+        </AbsoluteLayout>
+	</ContentPage.Content>
+</ContentPage>

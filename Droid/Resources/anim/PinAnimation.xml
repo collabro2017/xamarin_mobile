@@ -1,0 +1,8 @@
+﻿<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@drawable/cool" android:id="@+id/pin" android:duration="500" />
+  <item android:drawable="@drawable/heart_eyes" android:id="@+id/pin2" android:duration="500" />
+  <item android:drawable="@drawable/cool" android:duration="500" />
+  <item android:drawable="@drawable/heart_eyes" android:duration="500" />
+  <item android:drawable="@drawable/hugging" android:duration="500" />
+  <item android:drawable="@drawable/poop" android:duration="500" />
+</animation-list>

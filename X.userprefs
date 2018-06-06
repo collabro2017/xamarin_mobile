@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../../Library/Frameworks/Xamarin.Android.framework/Versions/8.0.0-33/lib/xbuild/Xamarin/Android/Xamarin.Android.Common.targets">
+    <Files>
+      <File FileName="X/App.xaml.cs" Line="31" Column="10" />
+      <File FileName="iOS/Info.plist" />
+      <File FileName="Droid/CustomRenderer/CustomMapRenderer.cs" Line="286" Column="43" />
+      <File FileName="X/Pages/MainPage.xaml.cs" Line="1547" Column="10" />
+      <File FileName="X/CustomRenderer/CustomMap.cs" Line="54" Column="14" />
+      <File FileName="../../../../../../Library/Frameworks/Xamarin.Android.framework/Versions/8.0.0-33/lib/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="2017" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.X.Droid PreferredExecutionTarget="Android.QYJ7N17401006659" />
+</Properties>

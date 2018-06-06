@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:local="clr-namespace:X;assembly=X"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="X.Pages.Login">
+	<ContentPage.Content>
+        <AbsoluteLayout>
+<!--            <Image AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Source="Login_BG" Opacity=".3" Aspect="AspectFill"/>-->
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0,.6,1,.6" 
+                AbsoluteLayout.LayoutFlags="All" 
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="Transparent"
+                >   
+                    <StackLayout HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0"   >
+                    <Label Text="Email" TextColor="Gray" FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+<!--                    <local:TransparentEntry x:Name="Email" Text="ca@gmail.com" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" >-->
+                    <local:TransparentEntry x:Name="Email" Keyboard="Email" Text="" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" >
+                    <local:TransparentEntry.Behaviors>
+                            <local:EmailValidator x:Name="emailValidator"/>
+                    </local:TransparentEntry.Behaviors>
+                    </local:TransparentEntry>
+                    <BoxView WidthRequest="250" HeightRequest="1" BackgroundColor="Gray" VerticalOptions="Start"  Margin="0,0,0,10"/>
+                    <Label   Text="Password"  TextColor="Gray"  FontSize="12" VerticalTextAlignment="End" HorizontalOptions="Start"/>
+<!--                    <local:TransparentEntry x:Name="Password" Text="12341234" IsPassword="true" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" />-->
+                    <local:TransparentEntry x:Name="Password"  Text=""   IsPassword="true" HorizontalOptions="StartAndExpand" FontSize="13" WidthRequest="250" />
+                    <BoxView WidthRequest="250" HeightRequest="1" BackgroundColor="Gray" VerticalOptions="Start" />
+                    
+                    <Label HorizontalOptions="End" Text="Login" Margin="0,20,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="LoginTapped" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </StackLayout>
+                
+            </StackLayout>
+
+               <StackLayout AbsoluteLayout.LayoutBounds="0,.92,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent"
+                VerticalOptions="EndAndExpand" Orientation="Horizontal"
+                HorizontalOptions="CenterAndExpand">
+                    <Label Text="Don't have an account yet?" FontSize="14" TextColor="Gray"/>
+                    <Label Text="Sign Up" TextColor="Black" FontSize="14">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="SignUpTapped" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </StackLayout>
+                 <StackLayout AbsoluteLayout.LayoutBounds="0,.99,1,.05" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                    <Label  Text="Forgot Password?" FontSize="15" TextColor="Black" HorizontalOptions="CenterAndExpand" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ForgotPasswordTapped" NumberOfTapsRequired="1"/>      
+                    </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+<!--            <Image x:Name="emoji123"   AbsoluteLayout.LayoutBounds="1,.5,.5,.5" AbsoluteLayout.LayoutFlags="All" />-->
+              <StackLayout AbsoluteLayout.LayoutBounds=".5,.5,.5,.5" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent" IsVisible="false" x:Name="screenLoading">
+            <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" IsRunning="true" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
